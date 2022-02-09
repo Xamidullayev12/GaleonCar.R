@@ -1,0 +1,24 @@
+{
+    "navbar": {
+        "main": "Main",
+        "carParc": "Car Parc",
+        "rent": "Rent",
+        "forBusiness": "For Business",
+        "contact": "Contact",
+        "personalArea": "Personal Area"
+    },
+    "footer": {
+        "main": "Main",
+        "catalog": "Catalog",
+        "contact": "Contact",
+        "about": "About",
+        "certificate": "Certificate",
+        "adress": "The Adress",
+        "adress2": "Uzbekistan, Tashkent city, Sergeli district",
+        "adress3": "To show on the map",
+        "devoloped": "Website developed"
+    }
+    
+   
+ }
+ 

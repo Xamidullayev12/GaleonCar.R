@@ -1,0 +1,68 @@
+.burger {
+  width: 25px;
+  height: 2.5px;
+  background-color: rgb(252 211 77);
+  position: relative;
+  cursor: pointer;
+}
+
+.burger::after {
+  content: "";
+  width: 25px;
+  height: 2.5px;
+  position: absolute;
+  top: 7px;
+  background-color: rgb(252 211 77);
+}
+
+.burger::before {
+  content: "";
+  width: 25px;
+  height: 2.5px;
+  background-color: rgb(252 211 77);
+  position: absolute;
+  bottom: 7px;
+}
+
+
+.active {
+  width: 25px;
+  height: 0px;
+  background-color: rgb(252 211 77);
+  position: relative;
+  cursor: pointer;
+  top: 20px;
+}
+
+
+
+.active::after{
+    content: "";
+    width: 25px;
+    height: 2.5px;
+    position: absolute;
+    top: -2px;
+    left: 11px;
+    background-color: rgb(252 211 77);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+.active::before {
+  content: "";
+  width: 25px;
+  height: 2.5px;
+  background-color: rgb(252 211 77);
+  position: absolute;
+  bottom: 0px;
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
