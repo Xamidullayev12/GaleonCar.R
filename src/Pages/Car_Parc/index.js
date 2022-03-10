@@ -40,7 +40,7 @@ function ParCards(props) {
         <div className="bg-gray-900 py-10 transition-all border-y" id={props.sec_id}>
             <div className="text-center lg:pt-20 md:pt-16">
                 <p className="text-gray-300 font-semibold text-xl">{props.cardsTitle}</p>
-                <h1 className="lg:text-4xl md:text-2xl text-xl text-amber-300 font-bold ">АВТОПАРК</h1>
+                <h1 className="lg:text-4xl md:text-2xl text-xl text-[#EDC5A2] font-bold ">АВТОПАРК</h1>
             </div>
             <div className="lg:pt-20 md-pt-16 mt-10 snap-x flex grid md:grid-cols-3 sm:grid-cols-2">
                 {props.card1}
@@ -64,7 +64,7 @@ export default function Car_Parc() {
                 <div className="lg:pt-14 pt-4 bg-auto relative">
                     <div className="text-center">
                         <p className="text-gray-300 ml:text-xl"> НАШ</p>
-                        <h1 className="text-amber-300 lg:text-3 xl ml:text-3xl mt-2">АВТОПАРК</h1>
+                        <h1 className="text-[#EDC5A2] lg:text-3 xl ml:text-3xl mt-2">АВТОПАРК</h1>
                     </div>
                     <div className=" lg:flex pt-8 max-w-screen-lg mx-auto">
                         <div className="ml:h-80 h-auto p-8 ml:w-96 w-full bg-gray-800 lg:mx-0 mx-auto">

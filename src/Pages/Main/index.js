@@ -1,14 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
+import Slider from "react-slick";
+
 
 
 //      Import Swipper 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper/css";
+// import "swiper/css/pagination";
+// import "swiper/css/navigation";
+// import { Autoplay, Pagination, Navigation } from "swiper";
 
-import styles from "../../index.css"
+import "../../index.css"
 
 //      MUI
 import SimpleAccordion from "../../Components/Accordion"
@@ -18,7 +20,7 @@ import SimpleAccordion from "../../Components/Accordion"
 import main from "../../Components/images/main/main.png"
 import shadow from "../../Components/images/main/shadow.png"
 import slider1 from "../../Components/images/main/swipper1.png"
-import slider2 from "../../Components/images/main/swipper2.png"
+// import slider2 from "../../Components/images/main/swipper2.png"
 import slider3 from "../../Components/images/main/swipper3.png"
 import slider4 from "../../Components/images/main/swipper4.png"
 import slider5 from "../../Components/images/main/swipper5.png"
@@ -33,19 +35,16 @@ import questionShadow from "../../Components/images/main/questionShadow.png"
 import map from "../../Components/images/main/map.png"
 
 //      Icons Imports
-import { BsWindowDock } from "react-icons/bs"
-import { FaRegUser } from "react-icons/fa"
-import { BiTimeFive } from "react-icons/bi"
+import { BsWindowDock,  BsTelegram  } from "react-icons/bs"
+import { BiTimeFive, BiMessageSquareDetail } from "react-icons/bi"
 import { IoIosTimer } from "react-icons/io"
-import { FaWallet } from "react-icons/fa"
-import { FaHandshake } from "react-icons/fa"
+import { FaWallet,FaHandshake } from "react-icons/fa"
 import { FiMapPin } from "react-icons/fi"
-import { BiMessageSquareDetail } from "react-icons/bi"
-import { AiFillFacebook } from "react-icons/ai"
-import { AiOutlineInstagram } from "react-icons/ai"
-import { BsTelegram } from "react-icons/bs"
-import { AiOutlineWhatsApp } from "react-icons/ai"
+import { AiOutlineWhatsApp, AiOutlineInstagram, AiFillFacebook } from "react-icons/ai"
+import { FaRegUser, FaArrowRight, FaArrowLeft } from "react-icons/fa";
+
 import { NavLink } from "react-router-dom";
+
 
 
 
@@ -56,7 +55,7 @@ export default function Main() {
             <Rent />
             <CarParc />
             <RentQuestion />
-            <OurClients />
+            {/* <OurClients /> */}
             <Contact />
         </section>
     )
@@ -69,15 +68,15 @@ export default function Main() {
 
 function CarParcCard2 (props) {
     return (
-        <div className={props.cardStyle}>
+        <div className={props.cardStyle} >
             <div className="relative w-full h-full hover:opacity-80 transition-all">
                 <div className="w-full h-full">
                     <img className="w-full h-full" src={props.imgUrl} />
                     <div className="relative ml:bottom-20 bottom-10 ml:w-48 w-32 mx-auto">
                     <NavLink to={props.pageUrl} exact>
-                        <a href={props.cardSrc} className="ml:text-sm text-xm text-xs">
+                        <div href={props.cardSrc} className="ml:text-sm text-xm text-xs">
                             <button className="shadow hover:shadow-amber-500 mx-auto shadow-white left-44 text-white ml:font-semibold hover:text-amber-500 hover:border-amber-500 text-center  ml:py-2 py-1 ml:w-52 mm:w-36 w-32 rounded border transition">{props.btnTxet}</button>
-                        </a>
+                        </div>
                     </NavLink>
                     </div>
                 </div>
@@ -89,18 +88,73 @@ function CarParcCard2 (props) {
 
 //      Swipper Section
 
+const images = [slider1, slider3, slider4, slider5, slider1, slider3,]
+ 
+
+function MainSlider() {
+    
+    
+
+  const NextArrow = ({ onClick }) => {
+    return (
+      <div className="arrow next" onClick={onClick}>
+        <FaArrowRight />
+      </div>
+    );
+  };
+
+  const PrevArrow = ({ onClick }) => {
+    return (
+      <div className="arrow prev" onClick={onClick}>
+        <FaArrowLeft />
+      </div>
+    );
+  };
+
+  const [imageIndex, setImageIndex] = useState(0)
+
+
+  const settings = {
+    infinite: true, 
+    lazyLoad: true,
+    speed: 500,
+    slidesToShow: 5,
+    centerMode: true,
+    centerPadding: 0,
+    nextArrow: <NextArrow onClick />,
+    prevArrow: <PrevArrow />,
+    beforeChange: (current, next) => setImageIndex(next) 
+  }
+    
+    return (
+
+        
+        <div className="slider-container">
+        <Slider {...settings}>
+          {images.map((img, idx) => (
+            <div key={idx} className={idx === imageIndex ? "slide activeSlide" : "slide"}>
+              <img src={img} alt={img} />
+            </div>
+          ))}
+        </Slider>
+      </div>
+
+    )
+}
+
+
 
 function SwipperSection() {
     return (
         <div className="">
             <div className="" style={{background: `url(${main})`, backgroundRepeat: "no-repeat"}}>
-                <div className="text-center w-full relative py-20" style={{background: `url(${shadow})`, backgroundRepeat: "no-repeat"}}>
+                <div className="text-center w-full relative pt-44 pb-20" style={{background: `url(${shadow})`, backgroundRepeat: "no-repeat"}}>
                     <div className="">
                         <h1 className="text-gray-300 md:text-3xl sm:text-xl">АРЕНДА </h1>
                         <h2 className="main_rent-title  md:text-5xl mt-2 sm:text-3xl">ПРЕМИУМ АВТОМОБИЛЕЙ</h2>
                     </div>
-                    <div className="mt-14 max-w-screen-md mx-auto">
-                        <Swiper
+                    <div className="mt-14 py-20 max-w-screen-xl mx-auto">
+                        {/* <Swiper
                             spaceBetween={30}
                             centeredSlides={true}
                             autoplay={{
@@ -139,7 +193,11 @@ function SwipperSection() {
                                     <img src={slider5} className="w-full h-full"/>
                                 </div>
                                 </SwiperSlide>
-                        </Swiper>
+                        </Swiper> */}
+
+                        <MainSlider />
+
+
                     </div>
                     
                 </div>
@@ -147,6 +205,7 @@ function SwipperSection() {
         </div>
     )
 }
+
 
 
 function CarParcCard (props) {
@@ -157,7 +216,7 @@ function CarParcCard (props) {
                     <img className="w-full h-full" src={props.imgUrl} />
                     <div className="relative ml:bottom-20 bottom-10 ml:w-48 w-32 mx-auto">
                         <a href={props.cardSrc} className="ml:text-sm text-xm text-xs">
-                            <button className="shadow hover:shadow-amber-500 mx-auto shadow-white left-44 text-white ml:font-semibold hover:text-amber-500 hover:border-amber-500 text-center  ml:py-2 py-1 ml:w-52 mm:w-36 w-32 rounded border transition">{props.btnTxet}</button>
+                            <button  className="shadow hover:shadow-amber-500 mx-auto shadow-white left-44 text-white ml:font-semibold hover:text-amber-500 hover:border-amber-500 text-center  ml:py-2 py-1 ml:w-52 mm:w-36 w-32 rounded border transition">{props.btnTxet}</button>
                         </a>
                     </div>
                 </div>
@@ -173,9 +232,9 @@ function Rent () {
         <div className="bg-black relative py-10 transition-all border-y">
             <div className="text-center lg:pt-20 md:pt-16">
                 <p className="text-gray-300 font-semibold text-xl">ВИДЫ</p>
-                <h1 className="lg:text-4xl md:text-2xl text-xl text-amber-300 font-bold ">АРЕНДЫ</h1>
+                <h1 className="lg:text-4xl md:text-2xl text-xl text-[#EDC5A2] font-bold ">АРЕНДЫ</h1>
             </div>
-            <div className="lg:pt-20 md-pt-16 mt-10 snap-x flex grid md:grid-cols-3 md:px-0 px-20 grid-cols-1">
+            <div className="lg:pt-20 md-pt-16 mt-10 snap-x flex grid md:grid-cols-3 md:px-0 ml:px-20 grid-cols-1">
                 <CarParcCard2 cardStyle={""}  imgUrl={rentCar1} cardSrc={"#with_driver"} pageUrl={"/with_a_driver"} btnTxet={"С ВОДИТЕЛЕМ"}/>
                 <CarParcCard2 cardStyle={""}  imgUrl={rentCar2} cardSrc={"#for_business"} pageUrl={"/for_special"} btnTxet={"ДЛЯ ОСОБЫХ ЦЕЛЕЙ"}/>
                 <CarParcCard2 cardStyle={""}  imgUrl={rentCar3} cardSrc={"#without_driver"} pageUrl={"/without_a_driver"} btnTxet={"БЕЗ ВОДИТЕЛЯ"}/>
@@ -192,22 +251,16 @@ function ParCards(props) {
     return (
         <div className="bg-gray-900 py-10 transition-all border-y">
             <div className="text-center lg:pt-20 md:pt-16">
-                <h1 className="lg:text-4xl md:text-2xl text-xl text-amber-300 font-bold ">АВТОПАРК</h1>
+                <h1 className="lg:text-4xl md:text-2xl text-xl text-[#EDC5A2] font-bold ">АВТОПАРК</h1>
                 <div className="text-gray-300 mt-4">
                         <NavLink to={"/carParc"}>
-                            <a href="/comfort" >
-                                <span className="px-4">Премиум</span>
-                            </a>
+                                <span className="px-4 hover:text-amber-500">Премиум</span>
                         </NavLink>
                         <NavLink to={"/forBusiness"} exact>
-                            <a href="#busness" >
-                                <span className="px-4 border-l border-r border-gray-300 ">Бизнес</span>
-                            </a>
+                                <span className="px-4 border-l border-r border-gray-300 hover:text-amber-500">Бизнес</span>
                         </NavLink>
                         <NavLink to={"/carParc"} exact >
-                            <a href="#sport" >
-                                <span className="px-4">Спорт</span>
-                            </a>
+                                <span className="px-4 hover:text-amber-500">Спорт</span>
                         </NavLink>
                     </div>
             </div>
@@ -226,10 +279,10 @@ function CarParc() {
     return (
         <div className="bg-gray-900 w-full ">
             <ParCards  
-                cardsTitle={"ПРЕМИУМ"}
-                card1={<CarParcCard imgUrl={rentParc1} cardSrc={"#"}/>}
-                card2={<CarParcCard imgUrl={rentParc2} cardSrc={"#"}/>}
-                card3={<CarParcCard cardStyle={"md:block hidden"} imgUrl={rentParc3} cardSrc={"#"}/>} />
+                cardsTdddddddddddddditle={"ПРЕМИУМ"}
+                card1={<CarParcCard imgUrl={rentParc1} btnTxet={"ЗАКАЗАТЬ МАШИНУ"} cardSrc={"#"}/>}
+                card2={<CarParcCard imgUrl={rentParc2} btnTxet={"ЗАКАЗАТЬ МАШИНУ"} cardSrc={"#"}/>}
+                card3={<CarParcCard cardStyle={"md:block hidden"} btnTxet={"ЗАКАЗАТЬ МАШИНУ"} imgUrl={rentParc3} cardSrc={"#"}/>} />
         </div>
     )
 }
@@ -240,20 +293,18 @@ function  RentQuestion() {
     return (
         <div className="bg-gray-900 pt-6">
             <div className="w-full " style={{background: `url(${question})`, backgroundRepeat: "no-repeat"}} >
-                <div className="w-full " style={{background: `url(${questionShadow})`, backgroundRepeat: "no-repeat"}}>
-                    <div className="max-w-screen-xl mx-auto md:py-4">
-                        <div className="text-amber-300 text-center mt-10">
+                <div className="w-full pb-32" style={{background: `url(${questionShadow})`, backgroundRepeat: "no-repeat"}}>
+                    <div className="max-w-screen-xl mx-auto md:py-4 object-cover px-5">
+                        <div className="text-center mt-10">
                             <p className="text-gray-300">УСЛОВИЯ</p>
-                            <h1 className="font-bold text-xl md:text-3xl mt-2">АРЕНДЫ</h1>
+                            <h1 className="text-[#EDC5A2] font-bold text-xl md:text-3xl mt-2">АРЕНДЫ</h1>
                         </div>
                         <div className="mt-10 lg:flex justify-between">
                             <div className="max-w-screen-sm lg:mx-0 mx-auto lg:mb-0 mb-10">
                                 <SimpleAccordion />
                             </div>
-                            <div className="flex justify-center mix-blend-difference max-w-screen-md mx-auto">
-                                
-
-                                <div className="grid lg:grid-cols-1 sm:grid-cols-3 ml:grid-cols-2 md:p-8 p-3 bg-gray-900 outline outline-amber-600 outline-offset-8">
+                            <div className="p-3 relative bg-gray-900 lg:h-[554px] lg:w-[314px]">
+                                <div className="grid lg:absolute lg:top-[-24px] lg:left-5 lg:grid-cols-1 sm:grid-cols-3 ml:grid-cols-2 md:p-8 border border-[#EDC5A2] lg:w-[314px] lg:h-[600px]">
                                     <div className="text-white w-48 py-3 flex  w-56 px-2">
                                         <span><BsWindowDock className="font-bold" size={20}/></span>
                                         <div className="items-center ml-3">
@@ -314,7 +365,7 @@ function OurClients() {
             <div>
                 <div className="text-center">
                     <p className="text-xl text-gray-300">ОТЗЫВЫ</p>
-                    <h1 className="lg:text-3xl font-bold text-amber-300">НАШИХ КЛИЕНТОВ</h1>
+                    <h1 className="lg:text-3xl font-bold text-[#EDC5A2]">НАШИХ КЛИЕНТОВ</h1>
                 </div>
             </div>
         </div>

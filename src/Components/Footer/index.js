@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom"
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+
+
 //      Image Imprts
 import logo from "../images/footer/logo.png"
 
@@ -30,12 +32,16 @@ export default function Footer() {
 
 
     return (
-        <footer className="bg-gray-900 py-4">
-            <div className="max-w-screen-md mx-auto ">
-                <div className="py-2">
-                    <img className="w-42 mx-auto" src={logo} />
+        <footer className="bg-[#0A0C11] py-4">
+                <div className="w-[140px] mx-auto">
+                    <NavLink to='/' exact>
+                        <div>
+                            <img src={logo} />
+                        </div>
+                    </NavLink>
                 </div>
-                <ul className="text-amber-200 md:flex  items-center justify-between hidden px-6">
+            <div className="max-w-screen-md mx-auto ">
+                <ul className="text-[#EDC5A2] md:flex  items-center justify-between hidden px-6">
                     <li className={splitLocation[1] === "" ? "text-amber-700" : ""}>
                         <NavLink to="/" exact>
                             <div className="hover:text-amber-500 mr-1">
@@ -65,17 +71,19 @@ export default function Footer() {
                         </NavLink>
                     </li>
                     <li className={splitLocation[1] === "contact" ? "text-amber-700" : ""}>
-                        <NavLink to="contact" exact>
+                        <NavLink to="/contact" exact>
                             <div className="hover:text-amber-500 mx-2">
                                 <span>{ t ('navbar.contact')}</span>
                             </div>
                         </NavLink>
                     </li>
                     <li className={splitLocation[1] === "prsonalArea" ? "text-amber-700" : ""}>
-                        <NavLink to="prsonalArea">
-                            <div className="hover:text-amber-500 ml-2">
-                                <span>{ t ('navbar.personalArea')}</span>
-                            </div>
+                        <NavLink to="/personalArea">
+                            <a href='#Personal_Area'>
+                                <div className="hover:text-amber-500 ml-2">
+                                    <span>{ t ('navbar.personalArea')}</span>
+                                </div>
+                            </a>
                         </NavLink>
                     </li>
                 </ul>

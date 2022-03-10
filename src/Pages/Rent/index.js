@@ -22,19 +22,17 @@ export default function  Rent() {
         <div className="bg-gray-900 ">
             <div className="w-full" style={{background: `url(${question})`, backgroundRepeat: "no-repeat"}} >
                 <div className="w-full pb-24" style={{background: `url(${questionShadow})`, backgroundRepeat: "no-repeat"}}>
-                    <div className="max-w-screen-xl mx-auto md:py-4">
-                        <div className="text-amber-300 text-center mt-10">
+                    <div className="max-w-screen-xl mx-auto lg:px-5 md:py-4">
+                        <div className=" text-center pt-20">
                             <p className="text-gray-300">УСЛОВИЯ</p>
-                            <h1 className="font-bold text-xl md:text-3xl mt-2">АРЕНДЫ</h1>
+                            <h1 className="font-bold text-xl text-[#EDC5A2] md:text-3xl mt-2">АРЕНДЫ</h1>
                         </div>
                         <div className="mt-10 lg:flex justify-between">
                             <div className="max-w-screen-sm lg:mx-0 mx-auto lg:mb-0 mb-10">
                                 <SimpleAccordion />
                             </div>
-                            <div className="flex justify-center mix-blend-difference max-w-screen-md mx-auto">
-                                
-
-                                <div className="grid lg:grid-cols-1 sm:grid-cols-3 ml:grid-cols-2 md:p-8 p-3 bg-gray-900 outline outline-amber-600 outline-offset-8">
+                            <div className="p-3 relative bg-gray-900 lg:h-[554px] lg:w-[314px]">
+                                <div className="grid lg:absolute lg:top-[-24px] lg:left-5 lg:grid-cols-1 sm:grid-cols-3 ml:grid-cols-2 md:p-8 border border-[#EDC5A2] lg:w-[314px] lg:h-[600px]">
                                     <div className="text-white w-48 py-3 flex  w-56 px-2">
                                         <span><BsWindowDock className="font-bold" size={20}/></span>
                                         <div className="items-center ml-3">

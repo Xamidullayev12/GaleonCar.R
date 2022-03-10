@@ -15,8 +15,8 @@ import Footer from "./Components/Footer/index.js";
 import MainPage from "." 
 import Car_Parc from "./Pages/Car_Parc"
 import Contact from "./Pages/Contact/index.js";
-import For_Business from "./Pages/For_Busines/index.js";
-import Personal_Area from "./Pages/Personal_Area/index.js"
+import For_Business from "./Pages/For_Busines";
+import Personal_Area from "./Pages/Personal_Area"
 import Rent from "./Pages/Rent"
 import without_a_driver from "./Pages/mini_pages/without _a_ driver/index.js";
 import with_a_drive from "./Pages/mini_pages/with_a_driver/index.js";
@@ -34,11 +34,10 @@ function App() {
           <Route path="/forBusiness" component={For_Business} exact/>
           <Route path="/contact" component={Contact} exact/>
           <Route path="/personalArea" component={Personal_Area} exact/>
-          <Route path="/without_a_drive" component={without_a_driver} exact />
-          <Route path="/with_a_drive" component={with_a_drive} exact />
+          <Route path="/without_a_driver" component={without_a_driver} exact />
+          <Route path="/with_a_driver" component={with_a_drive} exact />
           <Route path="/for_special" component={for_special} exact/>
         </Switch>
-        <Redirect/>
       </main>
       <Footer />
     </Router>

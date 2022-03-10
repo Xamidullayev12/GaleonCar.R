@@ -17,8 +17,8 @@ export default function Contact () {
         <section>
                 <div className="bg-black px-4 ml:pt-12">
                     <div className="ml:py-12 py-3 max-w-screen-xl mx-auto">
-                        <h1 className="lg:text-5xl sm:text-3xl text-2xl font-bold text-amber-300 text-center">КОНТАКТЫ</h1>
-                        <p className="lg:text-3xl sm:text-xl font-bold text-amber-300 ml:py-10 my-3">РЕКВИЗИТЫ</p>
+                        <h1 className="lg:text-5xl sm:text-3xl text-2xl font-bold text-[#EDC5A2] text-center">КОНТАКТЫ</h1>
+                        <p className="lg:text-3xl sm:text-xl font-bold text-[#EDC5A2] ml:py-10 my-3">РЕКВИЗИТЫ</p>
                     </div>
 
                     <div className="max-w-screen-xl mx-auto pb-20">
